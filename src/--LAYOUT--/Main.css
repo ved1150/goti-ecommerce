@@ -1,0 +1,13 @@
+.product{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+.add{
+ 
+    background-color: skyblue  ;
+    padding: 10px 20px ;
+    border: none;
+    color: white;
+    font-weight: 900;
+}

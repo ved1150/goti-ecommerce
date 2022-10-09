@@ -1,0 +1,11 @@
+.footer{
+    margin-top: 50px;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: space-around;
+}
+  
+.footer-icon{
+    display: flex;
+    justify-content: space-around;
+}
