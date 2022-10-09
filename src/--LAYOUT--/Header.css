@@ -1,0 +1,14 @@
+.upperPart{
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+    color: white;
+}
+.lowerPart{
+    text-align: center;
+    background-color: gray;
+    color: white;
+    height: 180px;
+    font-size: 60px;
+    margin:-80px  ;
+}
