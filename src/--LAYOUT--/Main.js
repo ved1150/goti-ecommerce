@@ -30,7 +30,7 @@ export default function Main() {
             <div >
                 <h2>{product.id}. {product.title}</h2>
                 <img src={product.imageUrl} alt=""   />
-                <h3>{product.price}</h3>
+                <h3>{product.price}$</h3>
                 <button className='add'>Add To Cart</button>
             </div>
           )
