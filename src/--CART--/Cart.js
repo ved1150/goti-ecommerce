@@ -16,7 +16,7 @@ export default function Cart(props) {
         ))
     );
     a.cartElements = cartElements
-    a.totalElements = a.totalElements +1
+    a.totalElements = a.totalElements -1
   }
   console.log(a.cartElements)
   return (

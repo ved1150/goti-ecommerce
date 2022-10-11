@@ -11,3 +11,7 @@
     color: white;
     font-weight: 900;
 }
+.home-page-item{
+    display: flex;
+    justify-content: space-around;
+}
