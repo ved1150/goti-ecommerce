@@ -8,6 +8,19 @@ export default function Cart(props) {
   let [cartElements, setCartElements] = useState(a.cartElements);
 
   if (!props.open) return;
+
+function purchase(){
+  if(a.cartElements.length !== 0){
+    setCartElements(() => a.cartElements = [])
+    a.totalElements = 0
+    alert("Thank you for Purchase")
+
+  }
+  else{
+    alert("you don't have product in cart ! ")
+  }
+}
+
   function removeItemFromCart(cartItem) {
     setCartElements(
       () =>
@@ -53,7 +66,7 @@ export default function Cart(props) {
           </div>
         );
       })}
-      <button className="purchase">PURCHASE</button>
+      <button onClick={purchase} className="purchase">PURCHASE</button>
     </div>
   );
 }
