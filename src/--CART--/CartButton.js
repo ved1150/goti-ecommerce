@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState ,useContext} from 'react'
 import Cart from "./Cart"
+import storeContext from '../--STORE--/storeContext'
+
 export default function CartButton() {
-  const [count ,setCount] = useState(0)
+  const a = useContext(storeContext)
   const [isOpen ,setIsOpen] = useState(false)
 
   function showTheCart() {
@@ -12,7 +14,7 @@ export default function CartButton() {
   }
   return (
     <div>
-      <button onClick={showTheCart}>cart {count}</button>
+      <button onClick={showTheCart}>cart {a.totalElements}</button>
       <Cart open={isOpen} close={hideTheCart} />
     </div>
   )
