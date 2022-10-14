@@ -10,6 +10,7 @@ export default function Header() {
                 <Link to='/home' style={{fontSize : 30}}>Home</Link>
                 <Link to='/store' style={{fontSize : 30}}>Store</Link>
                 <Link to='/about' style={{fontSize : 30}}>About</Link>
+                <Link to='/contact-us' style={{fontSize : 30}}>Contact-Us</Link>
                 <CartButton />
             </div>
             <div className='lowerPart'>

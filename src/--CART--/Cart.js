@@ -6,7 +6,7 @@ export default function Cart(props) {
   const a = useContext(storeContext);
   console.log(a);
   let [cartElements, setCartElements] = useState(a.cartElements);
-
+ 
   if (!props.open) return;
 
 function purchase(){

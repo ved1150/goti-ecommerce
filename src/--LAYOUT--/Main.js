@@ -45,7 +45,7 @@ export default function Main() {
         alert("Product already added");
         
       } else {
-        a.totalElements = a.totalElements + 1;
+        a.setTotalCount(1);
         return a.cartElements.push(product);
       }
     }
