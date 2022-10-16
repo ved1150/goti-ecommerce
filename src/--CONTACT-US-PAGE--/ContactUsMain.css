@@ -4,14 +4,14 @@
     background-color: whitesmoke;
     text-align: center;
 }
-input{
+.inputOfContactUs{
     display: flex;
     border-radius: 10px;
     width: 200px;
     height: 35px;
     margin: 0 auto;
 }
-button{
+.btnOfContactUs{
     padding: 20px 60px;
     background-color: rebeccapurple;
     border: none;

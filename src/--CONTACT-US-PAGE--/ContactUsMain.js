@@ -25,18 +25,18 @@ export default function ContactUsMain() {
     <div className="contactUsForm">
       <form onSubmit={sendFormData}>
         <div className="nameInput">
-          <label for="name">Name:</label>
-          <input type="text" onChange={handlerFormData} name="name" />
+          <label  for="name">Name:</label>
+          <input className="inputOfContactUs" type="text" onChange={handlerFormData} name="name" />
         </div>
         <div className="emailInput">
           <label for="email">Email Id:</label>
-          <input type="text" onChange={handlerFormData} name="email" />
+          <input className="inputOfContactUs" type="text" onChange={handlerFormData} name="email" />
         </div>
         <div className="numberInput">
           <label for="number">Phone Number:</label>
-          <input type="text" onChange={handlerFormData} name="number" />
+          <input className="inputOfContactUs" type="text" onChange={handlerFormData} name="number" />
         </div>
-        <button>send</button>
+        <button className="btnOfContactUs" >send</button>
       </form>
     </div>
   );

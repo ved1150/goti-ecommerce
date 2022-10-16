@@ -1,44 +1,44 @@
-import React from "react";
-import { Route } from "react-router-dom";
-import Header from "./--LAYOUT--/Header";
-import AboutHeader from "./--ABOUTPAGE--/AboutHeader"
-import HomeHeader from "./--HOMEPAGE--/HomeHeader"
-import ContactUsHeader from "./--CONTACT-US-PAGE--/ContactUsHeader"
+import React, { useContext } from "react";
+import { Route, Redirect } from "react-router-dom";
 import Main from "./--LAYOUT--/Main";
-import AboutMain from "./--ABOUTPAGE--/AboutMain"
-import HomeMain from "./--HOMEPAGE--/HomeMain"
-import ContactUsMain from "./--CONTACT-US-PAGE--/ContactUsMain"
-import Footer from "./--LAYOUT--/Footer";
-import AboutFooter from "./--ABOUTPAGE--/AboutFooter"
-import HomeFooter from "./--HOMEPAGE--/HomeFooter"
-import ContactUsFooter from "./--CONTACT-US-PAGE--/ContactUsFooter"
-import StoreState from "./--STORE--/StoreState";
-
+import AboutMain from "./--ABOUTPAGE--/AboutMain";
+import HomeMain from "./--HOMEPAGE--/HomeMain";
+import ContactUsMain from "./--CONTACT-US-PAGE--/ContactUsMain";
+import AuthForm from "./--LOGIN-PAGE--/AuthForm";
+import storeContext from "./--STORE--/storeContext";
 export default function App() {
+  const a = useContext(storeContext);
   return (
     <div>
-      <Route path="/store">
-        <StoreState>
-          <Header />
+      {a.userIsLogin && (
+        <Route path="/store">
           <Main />
-          <Footer />
-        </StoreState>
-      </Route>
+        </Route>
+      )}
       <Route path="/about">
-        <AboutHeader />
         <AboutMain />
-        <AboutFooter />
       </Route>
       <Route path="/home">
-        <HomeHeader />
         <HomeMain />
-        <HomeFooter />
       </Route>
       <Route path="/contact-us">
-        <ContactUsHeader />
         <ContactUsMain />
-        <ContactUsFooter />
       </Route>
+      {!a.userIsLogin && (
+        <Route path="/log-in">
+          <AuthForm />
+        </Route>
+      )}
+      {a.userIsLogin && (
+        <Route path="/log-in">
+          <Redirect to={"./store"} />
+        </Route>
+      )}
+      {!a.userIsLogin && (
+        <Route path="/store">
+          <Redirect to={"./log-in"} />
+        </Route>
+      )}
     </div>
   );
 }
