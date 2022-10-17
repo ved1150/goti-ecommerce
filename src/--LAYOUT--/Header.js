@@ -1,10 +1,17 @@
-import React, { useContext, useState } from "react";
+// ----------------------------IMPORT-------------------------------------//
+
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import CartButton from "../--CART--/CartButton";
 import "./Header.css";
-import storeContext from "../--STORE--/storeContext";
+import storeContext from "../--CONTEXT--/storeContext";
+
+// ----------------------------Header COMPONENT-------------------------------------//
+
 export default function Header() {
-  let a = useContext(storeContext);
+  let globalStore = useContext(storeContext);
+  // ----------------------------BASIC REACT DOM (Use - Router for LINK)-------------------------------------//
+
   return (
     <React.Fragment>
       <div className="header">
@@ -21,7 +28,7 @@ export default function Header() {
           <Link to="/contact-us" style={{ fontSize: 30 }}>
             Contact-Us
           </Link>
-          {!a.userIsLogin && (
+          {!globalStore.userIsLogin && (
             <Link to="/log-in" style={{ fontSize: 30 }}>
               Log-In
             </Link>

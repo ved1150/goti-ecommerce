@@ -1,37 +1,58 @@
-import React, { useContext, useState } from "react";
+// ----------------------------IMPORT-------------------------------------//
+
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios"
 import "./Cart.css";
-import storeContext from "../--STORE--/storeContext";
+import storeContext from "../--CONTEXT--/storeContext";
+
+// ----------------------------Cart COMPONENT-------------------------------------//
 
 export default function Cart(props) {
-  const a = useContext(storeContext);
-  console.log(a);
-  let [cartElements, setCartElements] = useState(a.cartElements);
- 
+  const globalStore = useContext(storeContext);
+  let [cartElements, setCartElements] = useState([]);
+  let userEmail = globalStore.userEmail.replace(
+    /[&,+()$~%@.'":*?<>{}]/g,
+    ""
+  );
+  useEffect(() => {
+      axios.get(`https://crudcrud.com/api/58e5362bc4064c5084a21a802b2c850d/${userEmail}`)
+      .then((res) => {
+         setCartElements(res.data)
+      })
+  } ,[props.open ,cartElements])
   if (!props.open) return;
 
-function purchase(){
-  if(a.cartElements.length !== 0){
-    setCartElements(() => a.cartElements = [])
-    a.totalElements = 0
-    alert("Thank you for Purchase")
+  // ----------------------------PURCHASE BUTTON T&C-------------------------------------//
 
+  function purchase() {
+    if (cartElements.length !== 0) {
+      setCartElements(() => (globalStore.cartElements = []));
+      globalStore.totalElements = 0;
+      alert("Thank you for Purchase");
+    } else {
+      alert("you don't have product in cart ! ");
+    }
   }
-  else{
-    alert("you don't have product in cart ! ")
-  }
-}
+
+  // ----------------------------REMOVE ITEM-------------------------------------//
 
   function removeItemFromCart(cartItem) {
-    setCartElements(
-      () =>
-        (cartElements = cartElements.filter(
-          (element) => element.id !== cartItem.id
-        ))
-    );
-    a.cartElements = cartElements
-    a.totalElements = a.totalElements -1
+    axios.delete(`https://crudcrud.com/api/58e5362bc4064c5084a21a802b2c850d/${userEmail}/${cartItem._id}`)
+    .then((res) => {
+        console.log("ok delete")
+    })
+    // setCartElements(
+    //   () =>
+    //     (cartElements = cartElements.filter(
+    //       (element) => element.id !== cartItem.id
+    //     ))
+    // );
+    globalStore.cartElements = cartElements;
+    globalStore.totalElements = globalStore.totalElements - 1;
   }
-  console.log(a.cartElements)
+
+  // ----------------------------BASIC REACT DOM-------------------------------------//
+
   return (
     <div className="Cart">
       <img
@@ -52,13 +73,16 @@ function purchase(){
         return (
           <div className="CartItem">
             <div className="item">
-              <img src={cartItem.imageUrl} alt="" width={70} height={70} />
+              <img src={cartItem.image} alt="" width={70} height={70} />
               <h4> {cartItem.title}</h4>
             </div>
             <h3 className="price">{cartItem.price}$</h3>
             <div className="quantity">
               <input type="number" min="1" max="1" value="1" />
-              <button className="remove" onClick={() => removeItemFromCart(cartItem)}>
+              <button
+                className="remove"
+                onClick={() => removeItemFromCart(cartItem)}
+              >
                 Remove
               </button>
             </div>
@@ -66,7 +90,9 @@ function purchase(){
           </div>
         );
       })}
-      <button onClick={purchase} className="purchase">PURCHASE</button>
+      <button onClick={purchase} className="purchase">
+        PURCHASE
+      </button>
     </div>
   );
 }

@@ -1,7 +1,11 @@
+// ----------------------------IMPORT-------------------------------------//
+
 import React, { useContext, useRef } from "react";
-import storeContext from "../--STORE--/storeContext";
-export default function AuthForm() {
-  const a = useContext(storeContext);
+import storeContext from "../--CONTEXT--/storeContext";
+
+// ----------------------------LoginPage COMPONENT-------------------------------------//
+export default function LoginPage() {
+  const globalStore = useContext(storeContext);
   const emailBox = useRef();
   const passwordBox = useRef();
 
@@ -9,6 +13,9 @@ export default function AuthForm() {
     event.preventDefault();
     let emailEntered = emailBox.current.value;
     let passwordEntered = passwordBox.current.value;
+
+    // ----------------------------FETCH POST AND GET A TOKEN(FIREBASE)-------------------------------------//
+
     fetch(
       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBrBgAA8XtM0mbY_5-gVCuhUpIBZZ6FQCo",
       {
@@ -22,12 +29,15 @@ export default function AuthForm() {
     ).then((ref) => {
       if (ref.ok) {
         console.log("ok");
-        ref.json().then((data) => a.login(data.idToken));
+        ref.json().then((data) => globalStore.login(data.idToken,emailEntered));
       } else {
         ref.json().then((data) => console.log(data.error));
       }
     });
   }
+
+  // ----------------------------BASIC REACT DOM-------------------------------------//
+
   return (
     <div className="authform">
       <h1 style={{ textAlign: "center" }}>Login</h1>

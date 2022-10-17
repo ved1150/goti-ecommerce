@@ -1,14 +1,27 @@
+// ----------------------------IMPORT-------------------------------------//
+
 import React from "react";
 
-export default function Main() {
-    const a ={
-        textAlign:"center",
-        marginTop : 100
-    }
+// ----------------------------AboutPage COMPONENT-------------------------------------//
+
+export default function AboutPage() {
+  const a = {
+    textAlign: "center",
+    marginTop: 100,
+  };
+
+  // ----------------------------BASIC REACT DOM-------------------------------------//
+
   return (
     <div>
       <h1 style={a}>About</h1>
-      <img style={{display:"flex" ,margin :"auto"}}src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="" width="200" height="200" />  
+      <img
+        style={{ display: "flex", margin: "auto" }}
+        src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
+        alt=""
+        width="200"
+        height="200"
+      />
       <p>
         Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of
         sorrows, hates no prosecutors will unfold in the enduring of which were

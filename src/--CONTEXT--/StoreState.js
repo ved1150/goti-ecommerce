@@ -1,22 +1,37 @@
+// ----------------------------IMPORT-------------------------------------//
+
 import { useState } from "react";
 import StoreContext from "./storeContext";
 import Header from "../--LAYOUT--/Header";
 import Footer from "../--LAYOUT--/Footer";
+
+// ----------------------------StoreState CONTEXT-API COMPONENT-------------------------------------//
+
 export default function StoreState(props) {
   const [totalElements, setTotalElements] = useState(0);
   const [token, setToken] = useState(null);
   const tokenIsAvilable = !!token;
-  console.log(tokenIsAvilable);
+  const [email, setEmail] = useState("");
+
+
+  // ----------------------------StoreState Global Store-------------------------------------//
+
   const cart = {
-    cartElements: [],
-    totalElements: totalElements,
+    cartElements:[],
     setTotalCount: (pre) => {
       setTotalElements(totalElements + pre);
     },
-    login: (token) => setToken(token),
+    login: (token , email) => { 
+      setToken(token)
+      setEmail(email)
+    },
     userIsLogin: tokenIsAvilable,
     tokenId: token,
+    userEmail : email
   };
+
+  // ----------------------------BASIC REACT DOM-------------------------------------//
+
   return (
     <StoreContext.Provider value={cart}>
       <Header />

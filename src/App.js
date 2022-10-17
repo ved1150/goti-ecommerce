@@ -1,13 +1,21 @@
+// ----------------------------IMPORT-------------------------------------//
+
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
-import Main from "./--LAYOUT--/Main";
-import AboutMain from "./--ABOUTPAGE--/AboutMain";
-import HomeMain from "./--HOMEPAGE--/HomeMain";
-import ContactUsMain from "./--CONTACT-US-PAGE--/ContactUsMain";
-import AuthForm from "./--LOGIN-PAGE--/AuthForm";
-import storeContext from "./--STORE--/storeContext";
+import Main from "./--PAGE--/ProductsPage";
+import AboutMain from "./--PAGE--/AboutPage";
+import HomeMain from "./--PAGE--/HomePage";
+import ContactUsMain from "./--PAGE--/ContactPage";
+import AuthForm from "./--PAGE--/LoginPage";
+import storeContext from "./--CONTEXT--/storeContext";
+
+// ----------------------------App COMPONENT-------------------------------------//
+
 export default function App() {
   const a = useContext(storeContext);
+
+  // ----------------------------BASIC REACT DOM (for path url=>Route, Redirect) -------------------------------------//
+
   return (
     <div>
       {a.userIsLogin && (

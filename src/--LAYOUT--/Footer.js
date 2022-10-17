@@ -1,6 +1,13 @@
+// ----------------------------IMPORT-------------------------------------//
+
 import React from "react";
 import "./Footer.css";
+
+// ----------------------------Footer COMPONENT-------------------------------------//
+
 export default function Footer() {
+  // ----------------------------BASIC REACT DOM-------------------------------------//
+
   return (
     <React.Fragment>
       <div className="footer">

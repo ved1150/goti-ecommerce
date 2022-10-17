@@ -1,21 +1,30 @@
-import React, { useState ,useContext} from 'react'
-import Cart from "./Cart"
-import storeContext from '../--STORE--/storeContext'
+// ----------------------------IMPORT-------------------------------------//
+
+import React, { useState, useContext } from "react";
+import Cart from "./Cart";
+import storeContext from "../--CONTEXT--/storeContext";
+
+// ----------------------------CartButton COMPONENT-------------------------------------//
 
 export default function CartButton() {
-  const a = useContext(storeContext)
-  const [isOpen ,setIsOpen] = useState(false)
+  const globalStore = useContext(storeContext);
+  const [isOpen, setIsOpen] = useState(false);
+
+  // ----------------------------LOGIC FOR BUTTON OPEN-CLOSE(use useState)-------------------------------------//
 
   function showTheCart() {
-      setIsOpen(true)
+    setIsOpen(true);
   }
-  function hideTheCart(){
-      setIsOpen(false)
+  function hideTheCart() {
+    setIsOpen(false);
   }
+
+  // ----------------------------BASIC REACT DOM-------------------------------------//
+
   return (
     <div>
-      <button onClick={showTheCart}>cart {a.totalElements}</button>
+      <button onClick={showTheCart}>cart {globalStore.totalElements}</button>
       <Cart open={isOpen} close={hideTheCart} />
     </div>
-  )
+  );
 }
