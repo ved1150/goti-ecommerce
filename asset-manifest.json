@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/sharpener-ecommerce/static/css/main.9ddd082f.css",
+    "main.js": "/sharpener-ecommerce/static/js/main.89db0c30.js",
+    "index.html": "/sharpener-ecommerce/index.html",
+    "main.9ddd082f.css.map": "/sharpener-ecommerce/static/css/main.9ddd082f.css.map",
+    "main.89db0c30.js.map": "/sharpener-ecommerce/static/js/main.89db0c30.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9ddd082f.css",
+    "static/js/main.89db0c30.js"
+  ]
+}
