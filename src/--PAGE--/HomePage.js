@@ -1,5 +1,14 @@
 // ----------------------------IMPORT-------------------------------------//
-import React from "react";
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+import Main from "../Main/Main";
+import Section1 from "../Main/Section1";
+import Section2 from "../Main/Section2";
+import Section3 from "../Main/Section3";
+import Section4 from "../Main/Section4";
+import Section5 from "../Main/Section5";
+import Section6 from "../Main/Section6";
+import "./HomePage.css";
 
 // ----------------------------HomePage COMPONENT-------------------------------------//
 
@@ -40,21 +49,14 @@ export default function HomePage() {
   // ----------------------------BASIC REACT DOM-------------------------------------//
 
   return (
-    <div>
-      <h1 style={{ textAlign: "center", marginTop: 100 }}>Tours</h1>
-      {arr.map((item) => {
-        return (
-          <>
-            <div className="home-page-item">
-              <div>{item.date}</div>
-              <div>{item.state}</div>
-              <div>{item.place}</div>
-              <button>BUY TICKETS</button>
-            </div>
-            <hr />
-          </>
-        );
-      })}
-    </div>
+    <Fragment>
+      <Main />
+      <Section1 />
+      <Section2 />
+      <Section3 />
+      <Section4 />
+      <Section5 />
+      <Section6 />
+    </Fragment>
   );
 }

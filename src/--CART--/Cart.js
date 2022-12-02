@@ -1,7 +1,7 @@
 // ----------------------------IMPORT-------------------------------------//
 
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios"
+import axios from "axios";
 import "./Cart.css";
 import storeContext from "../--CONTEXT--/storeContext";
 
@@ -10,16 +10,19 @@ import storeContext from "../--CONTEXT--/storeContext";
 export default function Cart(props) {
   const globalStore = useContext(storeContext);
   let [cartElements, setCartElements] = useState([]);
-  let userEmail = globalStore.userEmail.replace(
-    /[&,+()$~%@.'":*?<>{}]/g,
-    ""
-  );
+  let [remove, setRemove] = useState(false);
+  let userEmail = globalStore.userEmail.replace(/[&,+()$~%@.'":*?<>{}]/g, "");
   useEffect(() => {
-      axios.get(`https://crudcrud.com/api/58e5362bc4064c5084a21a802b2c850d/${userEmail}`)
+    axios
+      .get(
+        `https://crudcrud.com/api/d631ef488e1c48c3aa0cdb368056ffc0/${userEmail}`
+      )
       .then((res) => {
-         setCartElements(res.data)
-      })
-  } ,[props.open ,cartElements])
+        setCartElements(res.data);
+        globalStore.itemAdd(false);
+        setRemove(false);
+      });
+  }, [props.open, globalStore.itemIsAvilable, remove]);
   if (!props.open) return;
 
   // ----------------------------PURCHASE BUTTON T&C-------------------------------------//
@@ -37,18 +40,17 @@ export default function Cart(props) {
   // ----------------------------REMOVE ITEM-------------------------------------//
 
   function removeItemFromCart(cartItem) {
-    axios.delete(`https://crudcrud.com/api/58e5362bc4064c5084a21a802b2c850d/${userEmail}/${cartItem._id}`)
-    .then((res) => {
-        console.log("ok delete")
-    })
-    // setCartElements(
-    //   () =>
-    //     (cartElements = cartElements.filter(
-    //       (element) => element.id !== cartItem.id
-    //     ))
-    // );
-    globalStore.cartElements = cartElements;
-    globalStore.totalElements = globalStore.totalElements - 1;
+    axios
+      .delete(
+        `https://crudcrud.com/api/d631ef488e1c48c3aa0cdb368056ffc0/${userEmail}/${cartItem._id}`
+      )
+      .then((res) => {
+        console.log("ok delete");
+        setRemove(true);
+      });
+
+    // globalStore.cartElements = cartElements;
+    // globalStore.totalElements = globalStore.totalElements - 1;
   }
 
   // ----------------------------BASIC REACT DOM-------------------------------------//

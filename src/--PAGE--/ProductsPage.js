@@ -55,12 +55,15 @@ export default function ProductsPage() {
       );
       console.log(userEmail);
       axios
-        .post(`https://crudcrud.com/api/58e5362bc4064c5084a21a802b2c850d/${userEmail}`, {
+        .post(`https://crudcrud.com/api/d631ef488e1c48c3aa0cdb368056ffc0/${userEmail}`, {
           title: product.title,
           price: product.price,
           image: product.imageUrl,
         })
-        .then((res) => console.log(res))
+        .then((res) => {
+          console.log(res)
+          globalStore.itemAdd(true)
+        })
         .catch((err) => console.log(err));
     }
   }

@@ -9,6 +9,7 @@ import Footer from "../--LAYOUT--/Footer";
 
 export default function StoreState(props) {
   const [totalElements, setTotalElements] = useState(0);
+  const [productAdd , setProductAdd] = useState(false)
   const [token, setToken] = useState(null);
   const tokenIsAvilable = !!token;
   const [email, setEmail] = useState("");
@@ -27,7 +28,9 @@ export default function StoreState(props) {
     },
     userIsLogin: tokenIsAvilable,
     tokenId: token,
-    userEmail : email
+    userEmail : email,
+    itemAdd : (action) => setProductAdd(action),
+    itemIsAvilable : productAdd
   };
 
   // ----------------------------BASIC REACT DOM-------------------------------------//

@@ -14,31 +14,44 @@ export default function Header() {
 
   return (
     <React.Fragment>
-      <div className="header">
-        <div className="upperPart">
-          <Link to="/home" style={{ fontSize: 30 }}>
-            Home
+      <nav>
+        <div className="topnav myTopnav">
+          <Link to="/home" className="logo">
+            <img src="https://i.postimg.cc/Y9TX8zn2/icon-1.png" alt="LOGO " />{" "}
+            <b>Logo.</b>
           </Link>
-          <Link to="/store" style={{ fontSize: 30 }}>
-            Product
-          </Link>
-          <Link to="/about" style={{ fontSize: 30 }}>
+          <Link to="/about" className="animate">
             About
           </Link>
-          <Link to="/contact-us" style={{ fontSize: 30 }}>
+          <Link to="/contact-us" className="animate">
             Contact-Us
           </Link>
-          {!globalStore.userIsLogin && (
-            <Link to="/log-in" style={{ fontSize: 30 }}>
-              Log-In
-            </Link>
-          )}
-          <CartButton />
+          <Link to="/store" className="animate">
+            Product
+          </Link>
+          <Link to="/home" className="animate">
+            Home
+          </Link>
         </div>
-        <div className="lowerPart">
-          <h1>The Generics</h1>
-        </div>
-      </div>
+        {/* <div className="navbar">
+          <Link to="/home" className="logo2">
+            <img src="https://i.postimg.cc/Y9TX8zn2/icon-1.png" alt="" />{" "}
+            <b>Logo.</b>
+          </Link>
+          <Link to="/about" className="animate">
+            About
+          </Link>
+          <Link to="/contact-us" className="animate">
+            Contact-Us
+          </Link>
+          <Link to="/store" className="animate">
+            Product
+          </Link>
+          <Link to="/home" className="animate active2">
+            Home
+          </Link>
+        </div> */}
+      </nav>
     </React.Fragment>
   );
 }
